@@ -1,0 +1,43 @@
+﻿<Window x:Class="Kyrsovau_Rabota.MainWindow" Background="#FF0090FF"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kyrsovau_Rabota"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Rectangle Grid.Row="0" Grid.ColumnSpan="6"  Fill="#FF06CAEF"/>
+        <Button Content="Я клиент" Grid.Column="1" Grid.Row="2" Click="CLIENT" />
+        <Button Content="Я сотрудник" Grid.Column="4" Grid.Row="2" Click="SOTRYDNIC"/>
+        <Label Content="Добро пожаловать!" Grid.ColumnSpan="6" HorizontalAlignment="Center" FontSize="70" FontStyle="Italic"/>
+        <Button Content="EXIT" Grid.Column="0" Grid.Row="4" Background="#FFEA1C1C" Margin="0 0 0 -60" Click="EXIT"/>
+        <Label Content="В Техническую поддержку" Grid.Row="1" Grid.ColumnSpan="6" HorizontalAlignment="Center" FontSize="50"/>
+    </Grid>
+    <Window.Resources>
+        <Style TargetType = "Button" >
+            <Setter Property = "FontFamily" Value="Times new Romans" />
+            <Setter Property="Margin" Value="15"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="#FF00CAFF"/>
+            <Setter Property="Foreground" Value="#FF100B05"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+        </Style>
+    </Window.Resources>
+</Window>

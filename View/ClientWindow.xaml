@@ -1,0 +1,43 @@
+﻿<Window x:Class="Kyrsovau_Rabota.ClientWindow" Background="#FF0090FF"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kyrsovau_Rabota"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800">
+    <Grid DataContext="{Binding Newzauvka}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding comment}"/>
+        <Button Grid.Column="4" Grid.Row="3" Margin="30" Width="150" Grid.ColumnSpan="3" Content="Отправить заявку" FontFamily="Times new Romans" Command="{Binding SendZauvka}"/>
+        <ComboBox DataContext="{Binding Message}" Grid.Row="1" Grid.Column="1" Width="200" Grid.ColumnSpan="2" Height="30" ItemsSource="{Binding ystroy}">
+            <ComboBoxItem>Ноутбук</ComboBoxItem>
+            <ComboBoxItem>Персольный компьютер</ComboBoxItem>
+            <ComboBoxItem>Телефон</ComboBoxItem>
+            <ComboBoxItem>Smart часы</ComboBoxItem>
+            <ComboBoxItem>Игровые консоли</ComboBoxItem>
+        </ComboBox>
+        <ComboBox Grid.Row="3" Grid.Column="1" Width="200" Grid.ColumnSpan="2" Height="30" DataContext="{Binding Message}" ItemsSource="{Binding polomka}">
+            <ComboBoxItem>Системная неполадка</ComboBoxItem>
+            <ComboBoxItem>Техническая неполадка</ComboBoxItem>
+        </ComboBox>
+        <Label Content="Выберите устройство" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold"/>
+        <Label Content="Выберите тип неполадки" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold"/>
+        <Label Content="Описание неполадки" Grid.Row="0" Grid.Column="3" VerticalAlignment="Bottom" Grid.ColumnSpan="2" FontWeight="Bold"/>
+        <Label Content="Заполните заявку" FontSize="40" Grid.ColumnSpan="3" FontWeight="Bold"/>
+    </Grid>
+</Window>

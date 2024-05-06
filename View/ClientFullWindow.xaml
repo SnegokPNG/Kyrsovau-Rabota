@@ -1,0 +1,38 @@
+﻿<Window x:Class="Kyrsovau_Rabota.View.ClientFullWindow" Background="#FF0090FF"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kyrsovau_Rabota.View"
+        mc:Ignorable="d"
+        Title="ClientFullWindow" Height="450" Width="800">
+    <Grid DataContext="{Binding Otvet}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ListView Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="5" ItemsSource="{Binding Otvet}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="270" Header="Номер ответа" 
+                            DisplayMemberBinding="{Binding otvet}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Личное окно клиента" FontSize="37" Grid.ColumnSpan="4" FontWeight="Bold"/>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="105" Margin="5" Text="{Binding Otvet}" Background="White"/>
+        <Label Content="Ответ сотрудника" Grid.Row="1" Margin="7 6 10 20" FontWeight="Bold"/>
+        <Button Content="Заполнить заявку" Grid.Row="4" Grid.Column="3" Margin="10 50 10 10" Click="zauvka"/>
+    </Grid>
+</Window>
