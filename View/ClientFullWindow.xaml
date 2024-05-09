@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Kyrsovau_Rabota.View"
         mc:Ignorable="d"
         Title="ClientFullWindow" Height="450" Width="800">
-    <Grid DataContext="{Binding Otvet}">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -22,16 +22,18 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <ListView Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="5" ItemsSource="{Binding Otvet}">
+        <ListView Grid.Column="4" Grid.ColumnSpan="2" Grid.RowSpan="5" ItemsSource="{Binding Otvet}" SelectedItem="{Binding Selectedotvet}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="270" Header="Номер ответа" 
-                            DisplayMemberBinding="{Binding otvet}"/>
+                    <GridViewColumn Width="130" Header="Номер ответа" 
+                            DisplayMemberBinding="{Binding id}"/>
+                    <GridViewColumn Width="135" Header="Номер заявки" 
+                            DisplayMemberBinding="{Binding idpriem}"/>
                 </GridView>
             </ListView.View>
         </ListView>
         <Label Content="Личное окно клиента" FontSize="37" Grid.ColumnSpan="4" FontWeight="Bold"/>
-        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="105" Margin="5" Text="{Binding Otvet}" Background="White"/>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="105" Margin="5" Text="{Binding otvet}" Background="White" DataContext="{Binding Selectedotvet}"/>
         <Label Content="Ответ сотрудника" Grid.Row="1" Margin="7 6 10 20" FontWeight="Bold"/>
         <Button Content="Заполнить заявку" Grid.Row="4" Grid.Column="3" Margin="10 50 10 10" Click="zauvka"/>
     </Grid>

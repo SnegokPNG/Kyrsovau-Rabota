@@ -9,7 +9,7 @@ namespace Kyrsovau_Rabota.Model
     public class Otvet
     {
         public int id { get; set; }
-
         public string otvet { get; set; }
+        public int idpriem { get; set; }
     }
 }

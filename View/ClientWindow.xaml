@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Kyrsovau_Rabota"
         mc:Ignorable="d"
         Title="Window1" Height="450" Width="800">
-    <Grid DataContext="{Binding Newzauvka}">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -22,16 +22,16 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding comment}"/>
+        <TextBox Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2" DataContext="{Binding Newzauvka}" Text="{Binding comment}"/>
         <Button Grid.Column="4" Grid.Row="3" Margin="30" Width="150" Grid.ColumnSpan="3" Content="Отправить заявку" FontFamily="Times new Romans" Command="{Binding SendZauvka}"/>
-        <ComboBox DataContext="{Binding Message}" Grid.Row="1" Grid.Column="1" Width="200" Grid.ColumnSpan="2" Height="30" ItemsSource="{Binding ystroy}">
+        <ComboBox DataContext="{Binding Newzauvka   }" Grid.Row="1" Grid.Column="1" Width="200" Grid.ColumnSpan="2" Height="30" Text="{Binding ystroy}" x:Name="ComboBoxYstro">
             <ComboBoxItem>Ноутбук</ComboBoxItem>
             <ComboBoxItem>Персольный компьютер</ComboBoxItem>
             <ComboBoxItem>Телефон</ComboBoxItem>
             <ComboBoxItem>Smart часы</ComboBoxItem>
             <ComboBoxItem>Игровые консоли</ComboBoxItem>
         </ComboBox>
-        <ComboBox Grid.Row="3" Grid.Column="1" Width="200" Grid.ColumnSpan="2" Height="30" DataContext="{Binding Message}" ItemsSource="{Binding polomka}">
+        <ComboBox Grid.Row="3" Grid.Column="1" Width="200" Grid.ColumnSpan="2" Height="30" DataContext="{Binding Newzauvka}" Text="{Binding polomka}">
             <ComboBoxItem>Системная неполадка</ComboBoxItem>
             <ComboBoxItem>Техническая неполадка</ComboBoxItem>
         </ComboBox>
