@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kyrsovau_Rabota
 {
-    public class Message
+    public class Message //
     {
         public int id {  get; set; }
         public string ystroy { get; set; }
