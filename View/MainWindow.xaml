@@ -26,13 +26,24 @@
         <Button Content="Я клиент" Grid.Column="1" Grid.Row="2" Click="CLIENT" Grid.ColumnSpan="2"/>
         <Button Content="Я сотрудник" Grid.Column="3" Grid.Row="2" Click="SOTRYDNIC" Grid.ColumnSpan="2"/>
         <Label Content="Добро пожаловать!" Grid.ColumnSpan="6" HorizontalAlignment="Center" FontSize="70" FontStyle="Italic"/>
-        <Button Content="EXIT" Grid.Column="0" Grid.Row="4" Background="#FFEA1C1C" Margin="0 0 0 -60" Click="EXIT" Width="130"/>
-        <Label Content="В Техническую поддержку" Grid.Row="1" Grid.ColumnSpan="6" HorizontalAlignment="Center" FontSize="50"/>
+        <Button Grid.Row="3" Background="#FFEA1C1C" Click="EXIT" Width="70" Height="70" Grid.RowSpan="2" VerticalAlignment="Bottom">
+            <Button.LayoutTransform>
+                <TransformGroup>
+                    <RotateTransform Angle="50"/>
+                </TransformGroup>
+            </Button.LayoutTransform>
+            <ContentPresenter Content="Выход" Width="70" >
+                <ContentPresenter.LayoutTransform>
+                    <RotateTransform Angle="-50"/>
+                </ContentPresenter.LayoutTransform>
+            </ContentPresenter>
+        </Button>
+        <Label Content="В Техническую поддержку" Grid.Row="1" Grid.ColumnSpan="6" HorizontalAlignment="Center" FontSize="50" FontStyle="Italic"/>
         <Button Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Content="Регистрация" VerticalAlignment="Top" Click="Registration"/>
     </Grid>
     <Window.Resources>
         <Style TargetType = "Button" >
-            <Setter Property = "FontFamily" Value="Times new Romans" />
+            <Setter Property = "FontFamily" Value="Times new Romans"/>
             <Setter Property="Height" Value="30"/>
             <Setter Property="Width" Value="250"/>
             <Setter Property="Background" Value="#FF00CAFF"/>

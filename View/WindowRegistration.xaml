@@ -18,7 +18,7 @@
             <TextBox Text="{Binding Password}"/>
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <Button Content="Зарегестрироваться" VerticalAlignment="Center" Margin="20" Height="30" FontSize="20" Command="{Binding Registration}"/>
+            <Button Content="Зарегестрироваться" VerticalAlignment="Center" Margin="20" Height="30" FontSize="20" Command="{Binding RegistrationClient}"/>
         </StackPanel>
     </Grid>
     <Window.Resources>

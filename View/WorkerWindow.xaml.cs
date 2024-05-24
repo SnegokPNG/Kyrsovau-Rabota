@@ -25,22 +25,6 @@ namespace Kyrsovau_Rabota
         {
             InitializeComponent();
             DataContext = new MainWindowVM();
-
-
-        }
-
-        public void Enter(object sender, RoutedEventArgs e)
-        {
-            if (Loginbox.Text == "SNEGOK" && Passwordbox1.Password == "91141")
-            {
-                ClientPriem clientPriem = new ClientPriem();
-                clientPriem.Show();
-                Window.GetWindow(this).Close();
-            }
-           else
-            {
-                MessageBox.Show("Неверный логин или пароль", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Question);
-            }
         }
     }
 }
