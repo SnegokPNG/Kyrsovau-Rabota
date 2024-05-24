@@ -14,7 +14,7 @@ namespace Kyrsovau_Rabota.ViewModel
         private Message newzauvka = new();
         
 
-        public Message Newzauvka
+        public Message Newzauvka //1
         {
             get => newzauvka;
             set
