@@ -33,14 +33,20 @@ namespace Kyrsovau_Rabota
 
         private void CLIENT(object sender, RoutedEventArgs e)
         {
-            ClientFullWindow clientFullWindow = new ClientFullWindow();
-            clientFullWindow.Show();
+            WindowLoginClient windowLoginClient = new WindowLoginClient();
+            windowLoginClient.Show();
         }
 
         public void SOTRYDNIC(object sender, RoutedEventArgs e)
         {
             WorkerWindow workerWindow = new WorkerWindow();
             workerWindow.Show();
+        }
+
+        private void Registration(object sender, RoutedEventArgs e)
+        {
+            WindowRegistration windowRegistration = new WindowRegistration();
+            windowRegistration.Show();
         }
     }
 }

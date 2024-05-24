@@ -89,28 +89,5 @@ namespace Kyrsovau_Rabota.Model
                 return -1;
             }
         }
-
-        //public void Test()
-        //{
-        //    try
-        //    { 
-        //        // безопасное выполнение кода, 
-        //        // если произойдет ошибка, она будет перехвачена и выполнится блок catch
-        //        mySqlConnection.Open();
-        //        string str = "С'ироп";
-        //        string sql = "INSERT INTO TagsTable VALUES (0, @tag)";
-        //        using (MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection))
-        //        {
-        //            cmd.Parameters.Add(new MySqlParameter("tag", str));
-        //            cmd.ExecuteNonQuery();
-        //        }
-
-        //        mySqlConnection.Close();
-        //    }
-        //    catch (Exception ex) 
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
     }
 }

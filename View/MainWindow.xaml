@@ -23,20 +23,21 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Rectangle Grid.Row="0" Grid.ColumnSpan="6"  Fill="#FF06CAEF"/>
-        <Button Content="Я клиент" Grid.Column="1" Grid.Row="2" Click="CLIENT" />
-        <Button Content="Я сотрудник" Grid.Column="4" Grid.Row="2" Click="SOTRYDNIC"/>
+        <Button Content="Я клиент" Grid.Column="1" Grid.Row="2" Click="CLIENT" Grid.ColumnSpan="2"/>
+        <Button Content="Я сотрудник" Grid.Column="3" Grid.Row="2" Click="SOTRYDNIC" Grid.ColumnSpan="2"/>
         <Label Content="Добро пожаловать!" Grid.ColumnSpan="6" HorizontalAlignment="Center" FontSize="70" FontStyle="Italic"/>
-        <Button Content="EXIT" Grid.Column="0" Grid.Row="4" Background="#FFEA1C1C" Margin="0 0 0 -60" Click="EXIT"/>
+        <Button Content="EXIT" Grid.Column="0" Grid.Row="4" Background="#FFEA1C1C" Margin="0 0 0 -60" Click="EXIT" Width="130"/>
         <Label Content="В Техническую поддержку" Grid.Row="1" Grid.ColumnSpan="6" HorizontalAlignment="Center" FontSize="50"/>
+        <Button Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Content="Регистрация" VerticalAlignment="Top" Click="Registration"/>
     </Grid>
     <Window.Resources>
         <Style TargetType = "Button" >
             <Setter Property = "FontFamily" Value="Times new Romans" />
-            <Setter Property="Margin" Value="15"/>
             <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="250"/>
             <Setter Property="Background" Value="#FF00CAFF"/>
             <Setter Property="Foreground" Value="#FF100B05"/>
-            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontSize" Value="25"/>
             <Setter Property="FontStyle" Value="Italic"/>
         </Style>
     </Window.Resources>
