@@ -206,5 +206,5 @@ namespace Kyrsovau_Rabota.ViewModel
                 AccountClient.Add(account);
             }
         }
-    }
+    } //тест
 }
