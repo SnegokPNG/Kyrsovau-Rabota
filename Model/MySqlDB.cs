@@ -16,7 +16,7 @@ namespace Kyrsovau_Rabota.Model
         {
             MySqlConnectionStringBuilder stringBuilder = new();
             stringBuilder.UserID = "root";
-            stringBuilder.Password = "dictor31"; //Sal5mo5ne5lla!
+            stringBuilder.Password = "Sal5mo5ne5lla!";
             stringBuilder.Database = "kyrsovaubd";
             stringBuilder.Server = "localhost";
             stringBuilder.CharacterSet = "utf8mb4";
