@@ -11,5 +11,6 @@ namespace Kyrsovau_Rabota.Model
         public int id { get; set; }
         public string otvet { get; set; }
         public int idpriem { get; set; }
+        public int iduser {  get; set; }
     }
 }

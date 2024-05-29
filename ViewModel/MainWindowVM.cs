@@ -97,6 +97,8 @@ namespace Kyrsovau_Rabota.ViewModel
         public ObservableCollection<Otvet> Otvet { get; set; }
         public ObservableCollection<AccountClient> AccountClient { get; set; }
         public ObservableCollection<AccountUser> AccountUser { get; set; }
+
+        int idAccount;
         public MainWindowVM()
         {
             Message = new ObservableCollection<Message>(MessagesRepository.Instance.GetMessages());
@@ -106,6 +108,8 @@ namespace Kyrsovau_Rabota.ViewModel
             AccountClient = new ObservableCollection<AccountClient>(AccountsClientRepository.Instance.GetAccounts());
 
             AccountUser = new ObservableCollection<AccountUser>(AccountsUsersRepository.Instance.GetAccountsUser());
+
+            FindOtvets();
 
             SendZauvka = new CommandVM(() =>
             {
@@ -208,6 +212,7 @@ namespace Kyrsovau_Rabota.ViewModel
                 {
                     if (account.Login == LoginAccountClient.Login && account.Password == LoginAccountClient.Password)
                     {
+                        Application.Current.Properties["idAccount"] = account.IDAccountClient;
                         ClientFullWindow clientFullWindow = new ClientFullWindow();
                         clientFullWindow.Show();
 
@@ -256,6 +261,21 @@ namespace Kyrsovau_Rabota.ViewModel
             foreach (var account in updatedAccounts)
             {
                 AccountClient.Add(account);
+            }
+        }
+        private void FindOtvets()
+        {
+            idAccount = (int?)Application.Current.Properties["idAccount"] ?? 0;
+            if (Otvet.Count != 0)
+            {
+                Otvet.Clear();
+                foreach (var answer in OtvetRepository.Instance.GetOtvet())
+                {
+                    if (answer.iduser == idAccount)
+                    {
+                        Otvet.Add(answer);
+                    }
+                }
             }
         }
     }
