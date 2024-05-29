@@ -21,7 +21,17 @@ namespace Kyrsovau_Rabota.ViewModel
         private Otvet newotvet = new();
         private AccountClient newAccountClient = new();
         private AccountClient loginAccountClient = new();
+        private AccountUser loginAccountUser = new();
 
+        public AccountUser LoginAccountUser
+        {
+            get => loginAccountUser;
+            set
+            {
+                loginAccountUser = value;
+                Signal();
+            }
+        }
         public AccountClient LoginAccountClient
         {
             get => loginAccountClient;
@@ -78,12 +88,15 @@ namespace Kyrsovau_Rabota.ViewModel
             }
         }
         public CommandVM SendZauvka { get; }
+        public CommandVM DelZauvka { get; }
         public CommandVM SendOtvet { get; }
-        public CommandVM Registration { get; }
+        public CommandVM RegistrationClient { get; }
+        public CommandVM LoginUser { get; }
         public CommandVM LoginClient { get; }
         public ObservableCollection<Message> Message { get; set; }
         public ObservableCollection<Otvet> Otvet { get; set; }
         public ObservableCollection<AccountClient> AccountClient { get; set; }
+        public ObservableCollection<AccountUser> AccountUser { get; set; }
         public MainWindowVM()
         {
             Message = new ObservableCollection<Message>(MessagesRepository.Instance.GetMessages());
@@ -91,6 +104,8 @@ namespace Kyrsovau_Rabota.ViewModel
             Otvet = new ObservableCollection<Otvet>(OtvetRepository.Instance.GetOtvet());
 
             AccountClient = new ObservableCollection<AccountClient>(AccountsClientRepository.Instance.GetAccounts());
+
+            AccountUser = new ObservableCollection<AccountUser>(AccountsUsersRepository.Instance.GetAccountsUser());
 
             SendZauvka = new CommandVM(() =>
             {
@@ -113,6 +128,19 @@ namespace Kyrsovau_Rabota.ViewModel
                     MessageBox.Show("Необходимо заполнить все поля для отправки заявки", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
+            DelZauvka = new CommandVM(() =>
+            {
+                var connect = MySqlDB.Instance.GetConnection();
+                string sql = "DELETE FROM priem WHERE idPriem = @idPriem";
+                MySqlCommand command = new MySqlCommand(sql, connect);
+
+                command.Parameters.AddWithValue("@idPriem", Selectedzauvka.id);
+                command.ExecuteNonQuery();
+
+                connect.Close();
+
+                Message.Remove(Selectedzauvka);
+            });
             SendOtvet = new CommandVM(() =>
             {
                 var connect = MySqlDB.Instance.GetConnection();
@@ -125,8 +153,9 @@ namespace Kyrsovau_Rabota.ViewModel
                 command.ExecuteNonQuery();
 
                 connect.Close();
+
             });
-            Registration = new CommandVM(() =>
+            RegistrationClient = new CommandVM(() =>
             {
                 bool accountExist = false;
                 if (!string.IsNullOrEmpty(newAccountClient.Login) && !string.IsNullOrEmpty(newAccountClient.Password))
@@ -179,14 +208,37 @@ namespace Kyrsovau_Rabota.ViewModel
                 {
                     if (account.Login == LoginAccountClient.Login && account.Password == LoginAccountClient.Password)
                     {
-                        ClientPriem clientpriem = new ClientPriem();
-                        clientpriem.Show();
+                        ClientFullWindow clientFullWindow = new ClientFullWindow();
+                        clientFullWindow.Show();
 
                         Window windowLoginClient = Application.Current.Windows.OfType<WindowLoginClient>().FirstOrDefault();
                         windowLoginClient.Close();
                         loginSuccess = true;
 
                         Application.Current.Properties["idAccountsClients"] = account.IDAccountClient;
+
+                        break;
+                    }
+                }
+
+                if (!loginSuccess)
+                {
+                    MessageBox.Show("Данного аккаунта не существует", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            });
+            LoginUser = new CommandVM(() =>
+            {
+                bool loginSuccess = false;
+                foreach (var account in AccountUser)
+                {
+                    if (account.Login == LoginAccountUser.Login && account.Password == LoginAccountUser.Password)
+                    {
+                        ClientPriem clientpriem = new ClientPriem();
+                        clientpriem.Show();
+
+                        Window workerWindow = Application.Current.Windows.OfType<WorkerWindow>().FirstOrDefault();
+                        workerWindow.Close();
+                        loginSuccess = true;
 
                         break;
                     }
@@ -206,5 +258,5 @@ namespace Kyrsovau_Rabota.ViewModel
                 AccountClient.Add(account);
             }
         }
-    } //тест
+    }
 }
