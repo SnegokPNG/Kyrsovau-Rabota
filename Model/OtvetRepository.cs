@@ -42,7 +42,8 @@ namespace Kyrsovau_Rabota.Model
                     {
                         id = reader.GetInt32("idOtvet"),
                         otvet = reader.GetString("Otvet"),
-                        idpriem = reader.GetInt32("priem_idPriem")
+                        idpriem = reader.GetInt32("priem_idPriem"),
+                        iduser = reader.GetInt32("IdUser")
                     };
                     result.Add(Otvet);
                 }
