@@ -126,6 +126,7 @@ namespace Kyrsovau_Rabota.ViewModel
                     command.ExecuteNonQuery();
 
                     connect.Close();
+                    MessageBox.Show("Заявка отправлена", "Выполнено", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
@@ -160,6 +161,7 @@ namespace Kyrsovau_Rabota.ViewModel
 
                 connect.Close();
 
+                MessageBox.Show("Ответ отправлен", "Выполнено", MessageBoxButton.OK, MessageBoxImage.Information);
             });
             RegistrationClient = new CommandVM(() =>
             {
