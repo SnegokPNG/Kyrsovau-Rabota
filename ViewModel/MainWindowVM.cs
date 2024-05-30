@@ -147,13 +147,15 @@ namespace Kyrsovau_Rabota.ViewModel
             });
             SendOtvet = new CommandVM(() =>
             {
+                idAccount = (int?)Application.Current.Properties["idAccount"] ?? 0;
                 var connect = MySqlDB.Instance.GetConnection();
 
-                string sql = "INSERT INTO otvet (Otvet, priem_idPriem) values (@Otvet, @priem_idPriem)";
+                string sql = "INSERT INTO otvet (Otvet, priem_idPriem, idUser) values (@Otvet, @priem_idPriem, @idUser)";
                 MySqlCommand command = new MySqlCommand(sql, connect);
 
                 command.Parameters.AddWithValue("@Otvet", Newotvet.otvet);
                 command.Parameters.AddWithValue("@priem_idPriem", Selectedzauvka.id);
+                command.Parameters.AddWithValue("@idUser", idAccount);
                 command.ExecuteNonQuery();
 
                 connect.Close();
